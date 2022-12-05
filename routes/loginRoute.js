@@ -4,6 +4,8 @@ const loginController = require("../controllers/loginController");
 
 router
 .route('/')
+.post(loginController.findUser)
+
 
 
 module.exports = router;
