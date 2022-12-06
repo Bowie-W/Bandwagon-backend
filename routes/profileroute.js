@@ -3,6 +3,7 @@ const router = express.Router();
 const profileController = require("../controllers/profileController");
 const jwt = require('jsonwebtoken')
 require("dotenv").config();
+const path = require('path')
 const{secretkey} = process.env
 
 
@@ -17,12 +18,26 @@ function checkToken(req, res, next){
     }
 }
 
+const multer = require('multer')
+const storage = multer.diskStorage({
+    destination: (req, file, cb) =>{
+        cb(null, './public/images')
+    },
+    filename: (req, file, cb) => {
+        console.log(file)
+        cb(null, Date.now() + path.extname(file.originalname))
+    }
+})
+
+const upload = multer({storage: storage })
+
 router
     .route(`/`)
     .get(checkToken, profileController.getProfile);
 
 router
     .route("/customize")
-    .put(profileController.customizeProfile);
+    .put(profileController.customizeProfile)
+    .post(upload.single('image'), profileController.uploadAvatar)
 
 module.exports = router;

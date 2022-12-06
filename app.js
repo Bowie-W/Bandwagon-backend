@@ -1,19 +1,13 @@
 const express = require('express');
 const cors = require('cors');
 const app = express();
+const path = require('path')
 const loginRoutes = require('./routes/loginRoute')
 const usersRoutes = require('./routes/usersRoute')
 const profileRoutes = require('./routes/profileRoute')
 const signupRoutes = require('./routes/signupRoute')
 require('dotenv').config()
 const PORT = 5050
-
-const multer = require('multer')
-// const storage = multer.diskStorage({
-//     destination: (req)
-// })
-
-const upload = multer({})
 
 app.use(cors())
 app.use(express.static('public'))
