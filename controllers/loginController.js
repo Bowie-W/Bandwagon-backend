@@ -5,7 +5,7 @@ const{secretkey} = process.env
 
 
 exports.findUser = (req, res) => {
-  knex("users")
+  knex("user")
     .where({ username: req.body.username })
     .then((founduser) => {
       if (founduser[0].password === req.body.password) {

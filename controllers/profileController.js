@@ -15,7 +15,7 @@ function checkToken(req, res, next) {
 
 exports.getProfile = (req, res) => {
   console.log(req.user);
-  knex("users")
+  knex("user")
     .where({ username: req.user.username })
     .then((userData) => {
       res.status(200).json(userData[0]);
@@ -27,7 +27,7 @@ exports.getProfile = (req, res) => {
 
 exports.customizeProfile = (req, res) => {
   console.log(req.user);
-  knex("users")
+  knex("user")
     .where({ username: req.user.username })
     .then((userData) => {
       res.status(200).json({
@@ -40,6 +40,6 @@ exports.customizeProfile = (req, res) => {
 };
 
 exports.uploadAvatar = (req, res) => {
-    
+
 
 }

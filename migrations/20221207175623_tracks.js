@@ -10,7 +10,7 @@ exports.up = function (knex) {
     table.string("description");
     table
       .uuid("user_id")
-      .references("users.id")
+      .references("user.id")
       .onUpdate("CASCADE")
       .onDelete("CASCADE");
 

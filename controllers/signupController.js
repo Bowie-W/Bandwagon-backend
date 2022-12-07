@@ -4,7 +4,7 @@ const jwt = require("jsonwebtoken");
 const { secretkey } = process.env;
 
 exports.addNewUser = (req, res) => {
-  knex("users")
+  knex("user")
     .insert(req.body)
     .then((newUserId) => {
       let token = jwt.sign(
