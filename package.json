@@ -1,4 +1,15 @@
 {
+  "name": "inthebox-backend",
+  "version": "1.0.0",
+  "description": "inthebox-backend",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "node --watch app.js",
+    "start": "node app.js"
+  },
+  "author": "",
+  "license": "ISC",
   "dependencies": {
     "casual": "^1.6.2",
     "cors": "^2.8.5",

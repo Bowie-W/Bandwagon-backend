@@ -6,7 +6,7 @@ const usersRoutes = require('./routes/usersRoute')
 const profileRoutes = require('./routes/profileRoute')
 const signupRoutes = require('./routes/signupRoute')
 require('dotenv').config()
-const PORT = 8080
+const PORT = 5050
 
 app.use(cors())
 app.use(express.static('public'))
