@@ -40,5 +40,6 @@ exports.customizeProfile = (req, res) => {
 };
 
 exports.uploadAvatar = (req, res) => {
+    
 
 }

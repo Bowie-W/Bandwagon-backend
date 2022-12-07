@@ -3,11 +3,15 @@
  * @returns { Promise<void> }
  */
 exports.up = function (knex) {
-  return knex.schema.createTable("users", (table) => {
+  return knex.schema.createTable("gear", (table) => {
     table.uuid("id").primary();
-    table.string("username").notNullable();
-    table.string("email").notNullable();
-    table.string("city").notNullable();
+    table.string("gear_description");
+    table.string("gear_pic")
+    table
+      .uuid("user_id")
+      .references("users.id")
+      .onUpdate("CASCADE")
+      .onDelete("CASCADE");
     table.timestamps(true, true);
   });
 };
@@ -17,5 +21,5 @@ exports.up = function (knex) {
  * @returns { Promise<void> }
  */
 exports.down = function (knex) {
-    return knex.schema.dropTable('users')
+    return knex.schema.dropTable('gear')
 };
