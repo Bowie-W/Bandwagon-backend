@@ -9,7 +9,7 @@
     {
       id: '2922c286-16cd-4d43-ab98-c79f698aeab0',
       Username: 'Frank Ocean',
-      profile_name: "Franky O",
+      profile_name: "Franky Ocean Bastille",
       city: 'New York',
       password: "pink and white",
       email: "frank@ocean.com",

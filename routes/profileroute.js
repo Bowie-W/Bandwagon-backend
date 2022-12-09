@@ -18,7 +18,8 @@ function checkToken(req, res, next){
     }
 }
 
-const multer = require('multer')
+const multer = require('multer');
+const { get } = require("http");
 const storage = multer.diskStorage({
     destination: (req, file, cb) =>{
         cb(null, './public/images')
@@ -39,5 +40,22 @@ router
     .route("/customize")
     .put(profileController.customizeProfile)
     .post(upload.single('image'), profileController.uploadAvatar)
+
+router
+    .route('/tracks')
+    .get(checkToken, profileController.getTracks)
+
+router
+    .route('/gear')
+    .get(checkToken, profileController.getGear)
+
+router
+    .route("/customize/tracks")
+    .post(checkToken, profileController.uploadTrack)
+
+router
+    .route("/customize/gear")
+    .post(checkToken, profileController.uploadGear)
+    .get(checkToken, profileController.getGear)
 
 module.exports = router;
