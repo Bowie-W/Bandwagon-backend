@@ -13,6 +13,7 @@ exports.up = function (knex) {
     table.string("profile_name").notNullable();
     table.string("profile_descript");
     table.string("profile_chips");
+    table.string('biography')
 
     table.timestamps(true, true);
   });

@@ -16,9 +16,10 @@ exports.getProfile = (req, res) => {
 };
 
 exports.customizeProfile = (req, res) => {
-  console.log(req.user);
+  console.log(req.body);
   knex("user")
-    .where({ username: req.user.username })
+    .where({ id: req.body.id })
+    .update(req.body)
     .then((userData) => {
       res.status(200).json({
         city: userData[0].city,
@@ -30,10 +31,8 @@ exports.customizeProfile = (req, res) => {
 };
 
 exports.uploadTrack = (req, res) => {
-    const body = req.body
-    body.user_id = req.user.id
   knex("tracks")
-    .insert(body)
+    .insert(req.body)
     .then((newTrack) => {
       res.status(201).json(newTrack);
     })
@@ -48,8 +47,8 @@ exports.getTracks = (req, res) => {
   knex("tracks")
     .where({ user_id: req.user.id })
     .then((userTracks) => {
-      res.status(200).json({
-        userTracks
+      res.status(201).json({
+        userTracks,
       });
     })
     .catch(() => {
@@ -58,8 +57,8 @@ exports.getTracks = (req, res) => {
 };
 
 exports.uploadGear = (req, res) => {
-    const body = req.body
-    body.user_id = req.user.id
+  const body = req.body;
+  body.user_id = req.user.id;
   knex("gear")
     .insert(body)
     .then((newGear) => {
@@ -70,20 +69,32 @@ exports.uploadGear = (req, res) => {
         message: `Error Adding Gear`,
       });
     });
-}
+};
 
 exports.getGear = (req, res) => {
-    knex("gear")
+  knex("gear")
     .where({ user_id: req.user.id })
     .then((userGear) => {
       res.status(200).json({
-        userGear
+        userGear,
       });
     })
     .catch(() => {
       res.status(400).json({ message: "Could not get tracks" });
     });
-   
-  };
+};
 
-exports.uploadAvatar = (req, res) => {};
+exports.customizeAvatar = (req, res) => {
+  console.log(req)
+  knex("user")
+    .where({ id: req.body.id })
+    .update(req.body)
+    .then(() => {
+      res.sendStatus(200);
+    })
+    .catch(() => {
+      res.status(400).json({
+        message: `Error Editing Inventory Item`,
+      });
+    });
+};

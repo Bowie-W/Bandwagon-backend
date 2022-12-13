@@ -9,7 +9,7 @@ exports.up = function (knex) {
     table.string("gear_pic")
     table
       .uuid("user_id")
-      .references("users.id")
+      .references("user.id")
       .onUpdate("CASCADE")
       .onDelete("CASCADE");
     table.timestamps(true, true);
