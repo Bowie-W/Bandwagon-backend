@@ -4,7 +4,7 @@ require("dotenv").config();
 const { secretkey } = process.env;
 
 exports.getProfile = (req, res) => {
-  console.log(req.user);
+  // console.log(req.user);
   knex("user")
     .where({ username: req.user.username })
     .then((userData) => {
@@ -44,6 +44,7 @@ exports.uploadTrack = (req, res) => {
 };
 
 exports.getTracks = (req, res) => {
+  console.log("this req" +req)
   knex("tracks")
     .where({ user_id: req.user.id })
     .then((userTracks) => {
@@ -84,6 +85,11 @@ exports.getGear = (req, res) => {
     });
 };
 
+exports.editGear = (req, res) => {
+  knex('gear')
+  .where ({user_id: req.user.id})
+}
+
 exports.customizeAvatar = (req, res) => {
   console.log(req)
   knex("user")
@@ -94,7 +100,23 @@ exports.customizeAvatar = (req, res) => {
     })
     .catch(() => {
       res.status(400).json({
-        message: `Error Editing Inventory Item`,
+        message: `Error Editing Avatar`,
       });
     });
 };
+
+exports.editBio = (req, res) => {
+  knex('user')
+  .where({id:req.body.id})
+  .update(req.body)
+  .then(() => {
+    res.sendStatus(200);
+  })
+  .catch(() => {
+    res.status(400).json({
+      message: `Error Editing Biography`,
+    });
+  });
+
+
+}

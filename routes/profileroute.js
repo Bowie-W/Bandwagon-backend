@@ -19,9 +19,7 @@ function checkToken(req, res, next){
 }
 
 
-router
-    .route(`/:username`)
-    .get(checkToken, profileController.getProfile);
+
 
 router
     .route("/customize")
@@ -35,9 +33,6 @@ router
     .route('/tracks')
     .get(checkToken, profileController.getTracks)
 
-router
-    .route('/:username/gear')
-    .get(checkToken, profileController.getGear)
 
 router
     .route("/customize/tracks")
@@ -47,5 +42,17 @@ router
     .route("/customize/gear")
     .post(checkToken, profileController.uploadGear)
     .get(checkToken, profileController.getGear)
+    .put(checkToken, profileController.editGear)
 
+router
+    .route('/customize/bio')
+    .put(profileController.editBio)
+
+router
+    .route(`/:username`)
+    .get(checkToken, profileController.getProfile);
+
+router
+    .route('/:username/gear')
+    .get(checkToken, profileController.getGear)
 module.exports = router;
