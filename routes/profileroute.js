@@ -8,7 +8,7 @@ const{secretkey} = process.env
 
 
 function checkToken(req, res, next){
-    console.log(req.headers.authorization);
+    // console.log(req.headers.authorization);
     const token = req.headers.authorization.split(' ')[1]
     if (token && jwt.verify(token, secretkey)){
         req.user = jwt.decode(token)
@@ -22,16 +22,21 @@ function checkToken(req, res, next){
 
 
 router
-    .route("/customize")
-    .put(profileController.customizeProfile)
-
-router
     .route("/customize/avatar")
     .put(profileController.customizeAvatar)
 
 router
-    .route('/tracks')
-    .get(checkToken, profileController.getTracks)
+    .route("/customize/")
+    .put(profileController.customizeProfile)
+
+
+router
+    .route('/tracks/single/:id')
+    .get(profileController.getSingleTrack)
+
+router
+    .route('/tracks/:id')
+    .get(profileController.getTracks)
 
 
 router
@@ -40,19 +45,19 @@ router
 
 router
     .route("/customize/gear")
-    .post(checkToken, profileController.uploadGear)
-    .get(checkToken, profileController.getGear)
-    .put(checkToken, profileController.editGear)
+    .post(profileController.uploadGear)
+    .get(profileController.getGear)
+    .put(profileController.editGear)
 
 router
     .route('/customize/bio')
     .put(profileController.editBio)
 
 router
-    .route(`/:username`)
-    .get(checkToken, profileController.getProfile);
+    .route(`/:id`)
+    .get(profileController.getProfile);
 
 router
-    .route('/:username/gear')
-    .get(checkToken, profileController.getGear)
+    .route('/:id/gear')
+    .get(profileController.getGear)
 module.exports = router;

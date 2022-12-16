@@ -4,9 +4,9 @@ require("dotenv").config();
 const { secretkey } = process.env;
 
 exports.getProfile = (req, res) => {
-  // console.log(req.user);
+  // console.log(req.params);
   knex("user")
-    .where({ username: req.user.username })
+    .where({ id: req.params.id})
     .then((userData) => {
       res.status(200).json(userData[0]);
     })
@@ -44,9 +44,8 @@ exports.uploadTrack = (req, res) => {
 };
 
 exports.getTracks = (req, res) => {
-  console.log("this req" +req)
   knex("tracks")
-    .where({ user_id: req.user.id })
+    .where({ user_id: req.params.id })
     .then((userTracks) => {
       res.status(201).json({
         userTracks,
@@ -57,11 +56,37 @@ exports.getTracks = (req, res) => {
     });
 };
 
+exports.getSingleTrack = (req, res) => {
+  // console.log(req)
+  knex("tracks")
+    .where({ id: req.params.id })
+    .then((track) => {
+      // console.log(track)
+      res.status(201).json({track});
+    })
+    .catch(() => {
+      res.status(400).json({ message: "Could not get this Track" });
+    });
+};
+
+exports.getTracktoPrime = (req, res) => {
+
+  knex('tracks')
+  .where({track_audio : req.params.primedTrack_url})
+  .then ((primedTrack) => {
+    res.status(201).json({
+      primedTrack,
+    });
+  })
+  .catch(() => {
+    res.status(400).json({ message: "Could not get this Track" });
+  });
+}
+
 exports.uploadGear = (req, res) => {
-  const body = req.body;
-  body.user_id = req.user.id;
+  console.log(req.body)
   knex("gear")
-    .insert(body)
+    .insert(req.body)
     .then((newGear) => {
       res.status(201).json(newGear);
     })
@@ -74,7 +99,7 @@ exports.uploadGear = (req, res) => {
 
 exports.getGear = (req, res) => {
   knex("gear")
-    .where({ user_id: req.user.id })
+    .where({ user_id: req.params.id })
     .then((userGear) => {
       res.status(200).json({
         userGear,
@@ -86,12 +111,11 @@ exports.getGear = (req, res) => {
 };
 
 exports.editGear = (req, res) => {
-  knex('gear')
-  .where ({user_id: req.user.id})
-}
+  knex("gear").where({ user_id: req.user.id });
+};
 
 exports.customizeAvatar = (req, res) => {
-  console.log(req)
+  // console.log(req);
   knex("user")
     .where({ id: req.body.id })
     .update(req.body)
@@ -106,17 +130,16 @@ exports.customizeAvatar = (req, res) => {
 };
 
 exports.editBio = (req, res) => {
-  knex('user')
-  .where({id:req.body.id})
-  .update(req.body)
-  .then(() => {
-    res.sendStatus(200);
-  })
-  .catch(() => {
-    res.status(400).json({
-      message: `Error Editing Biography`,
+  console.log(req.body)
+  knex("user")
+    .where({ id: req.body.id })
+    .update(req.body)
+    .then(() => {
+      res.sendStatus(200);
+    })
+    .catch(() => {
+      res.status(400).json({
+        message: `Error Editing Biography`,
+      });
     });
-  });
-
-
-}
+};
