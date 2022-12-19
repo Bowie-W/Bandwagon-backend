@@ -5,6 +5,7 @@ const{secretkey} = process.env
 
 
 exports.findUser = (req, res) => {
+  console.log(req.body.username)
   knex("user")
     .where({ username: req.body.username })
     .then((founduser) => {
@@ -12,9 +13,11 @@ exports.findUser = (req, res) => {
         let token = jwt.sign({ username: req.body.username,
         id: founduser[0].id }, secretkey);
         res.status(200).json({token:token});
+      } else{
+        res.status(403).json('Forbidden')
       }
     })
-    .catch(() => {
-      res.status(400).json({token: null});
+    .catch((error) => {
+      res.status(400).json(error);
     });
 };
