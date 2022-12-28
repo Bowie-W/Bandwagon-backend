@@ -23,3 +23,4 @@ exports.getSingleUser = (req,res) =>{
     })
 
 }
+

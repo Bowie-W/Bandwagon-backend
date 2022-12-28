@@ -5,6 +5,7 @@ const loginRoutes = require('./routes/loginRoute')
 const usersRoutes = require('./routes/usersRoute')
 const profileRoutes = require('./routes/profileRoute')
 const signupRoutes = require('./routes/signupRoute')
+const conversationsRoutes = require('./routes/conversationsRoute')
 require('dotenv').config()
 const PORT = 5050
 
@@ -16,6 +17,7 @@ app.use('/login', loginRoutes)
 app.use('/signup', signupRoutes)
 app.use('/profile', profileRoutes)
 app.use('/users', usersRoutes)
+app.use('/conversations', conversationsRoutes)
 
 app.listen(PORT, function(){
     console.log(`Running on ${PORT}, baby; baby`)
