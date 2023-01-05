@@ -6,6 +6,7 @@ exports.up = function (knex) {
     return knex.schema.createTable("messages", (table) => {
       table.uuid("id").primary();
       table.string('sender_id')
+      table.string('sender_name')
       table.string('message')
       table
       .uuid("conversation_id")
