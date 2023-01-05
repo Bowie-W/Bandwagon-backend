@@ -21,6 +21,10 @@ router
     .post(conversationsController.createChat)
 
 router
+    .route('/userprofile')
+    .get(conversationsController.getOtherUser)
+
+router
     .route('/:userid')
     .get(conversationsController.getConversations)
 

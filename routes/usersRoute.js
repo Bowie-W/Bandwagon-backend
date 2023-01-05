@@ -21,6 +21,10 @@ router
     .get(checkToken, usersController.getAllUsers);
 
 router
+    .route('/conversation/list')
+    .post(usersController.getConversationListUsers)
+
+router
     .route('/:userid')
     .get(usersController.getSingleUser)
 

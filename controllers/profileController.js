@@ -143,3 +143,19 @@ exports.editBio = (req, res) => {
       });
     });
 };
+
+exports.editChips = (req, res) => {
+  console.log(req.body)
+  knex('user')
+  .where({id:req.body.id})
+  .update(req.body)
+  .then(() => {
+    res.sendStatus(200);
+  })
+  .catch(() => {
+    res.status(400).json({
+      message: `Error Editing Chips`,
+    });
+  });
+
+}

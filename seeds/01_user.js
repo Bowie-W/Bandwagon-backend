@@ -15,7 +15,8 @@ exports.seed = async function (knex) {
       email: "frank@ocean.com",
       profile_pic: "https://res.cloudinary.com/dl2liojkl/image/upload/v1670898272/w4bbapwmrvowp1j1vlox.webp",
       profile_descript: "just a guy, i'm not a gawd",
-      profile_chips: "r&b b&b frc trp",
+      genreChips:'R&B',
+      instrChips:'Guitar',
       biography: "Frank the tank is the spank the rank and trank the blank, ",
     },
     {
@@ -28,7 +29,8 @@ exports.seed = async function (knex) {
       profile_pic:
         "https://res.cloudinary.com/dl2liojkl/image/upload/v1670954009/crj_d1iz7x.jpg",
       profile_descript: "The GOAT",
-      profile_chips: "POP, 80s, Soul, electric",
+      genreChips:'Pop, Rock, Electronic',
+      instrChips:'Piano',
       biography:
         "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum. ",
     },
@@ -42,7 +44,8 @@ exports.seed = async function (knex) {
       profile_pic:
         "https://res.cloudinary.com/dl2liojkl/image/upload/v1670954555/tsultan_ufsood.jpg",
       profile_descript: "Its the slam jam kabam",
-      profile_chips: "Piano, Guitar, pedals, accordion, flute, trumpet, electric, dance, pop",
+      genreChips:'Rock',
+      instrChips:'Guitar',
       biography:
         "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum. ",
     },
@@ -56,7 +59,8 @@ exports.seed = async function (knex) {
       profile_pic:
         "https://res.cloudinary.com/dl2liojkl/image/upload/v1670954717/fchopin_iab47n.jpg",
       profile_descript: "Sometimes I can only groan, and suffer, and pour out my despair at the piano!",
-      profile_chips: "Piano, Classical, Romantic",
+      genreChips:'Classical',
+      instrChips:'Piano',
       biography:
         "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum. ",
     },
@@ -70,7 +74,8 @@ exports.seed = async function (knex) {
       profile_pic:
         "https://res.cloudinary.com/dl2liojkl/image/upload/v1670954961/ar_vgp5qv.png",
       profile_descript: "No negative vibes, just love",
-      profile_chips: "r&b, pop, vocals",
+      genreChips:'Hip-Hop',
+      instrChips:'Vocal',
       biography:
         "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum. ",
     },

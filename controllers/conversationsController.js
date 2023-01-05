@@ -10,6 +10,7 @@ exports.createChat = (req,res) =>{
 }
 
 exports.getConversations = (req,res) =>{
+    console.log(req.params)
     knex('conversations')
     .where({sender_id:req.params.userid})
     .orWhere({receiver_id:req.params.userid})
@@ -36,4 +37,9 @@ exports.getMessages = (req,res) =>{
     {
         res.status(200).json(messageData)
     })
+}
+
+exports.getOtherUser = (req,res) =>{
+    knex('user')
+    
 }

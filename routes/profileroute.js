@@ -54,6 +54,10 @@ router
     .put(profileController.editBio)
 
 router
+    .route('/customize/Chips')
+    .put(profileController.editChips)
+
+router
     .route(`/:id`)
     .get(profileController.getProfile);
 
