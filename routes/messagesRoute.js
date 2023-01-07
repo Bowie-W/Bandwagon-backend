@@ -6,6 +6,7 @@ const messagessController = require("../controllers/messagesController");
 router
     .route('/:convo_id')
     .get(messagessController.getMessages)
+    .post(messagessController.postMessage)
 
 
 module.exports = router;

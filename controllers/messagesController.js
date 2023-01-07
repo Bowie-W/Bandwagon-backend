@@ -11,6 +11,17 @@ exports.getMessages = (req,res) => {
     .catch((error) => {
         res.status(400).json(error)
     })
+}
 
-
+exports.postMessage = (req,res) => {
+    console.log(req.params)
+    console.log(req.body)
+    knex('messages')
+    .insert(req.body)
+    .then((newMsg) => {
+        res.status(200).json(req.body)
+    })
+    .catch((error) => {
+        res.status(400).json(error)
+    })
 }
