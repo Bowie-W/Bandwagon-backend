@@ -25,6 +25,11 @@ router
     .get(conversationsController.getOtherUser)
 
 router
+    .route('/check')
+    .post(conversationsController.checkConversations)
+
+
+router
     .route('/:userid')
     .get(conversationsController.getConversations)
 

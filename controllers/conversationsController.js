@@ -20,6 +20,26 @@ exports.getConversations = (req,res) =>{
     })
 }
 
+exports.checkConversations = (req,res) => {
+    console.log(req.body)
+    knex('conversations')
+    .where(function (){
+        this
+        .where({sender_id:req.body.userId})
+        .where({receiver_id:req.body.contactId})
+    })
+    .orWhere(function (){
+        this
+        .where({receiver_id:req.body.userId})
+        .where({sender_id:req.body.contactId})
+    })
+    .then ((userChat)=>
+    {
+        res.status(200).json(userChat)
+    })
+
+}
+
 exports.addMessage = (req,res) =>{
     knex('messages')
     .insert(req.body)
@@ -41,5 +61,5 @@ exports.getMessages = (req,res) =>{
 
 exports.getOtherUser = (req,res) =>{
     knex('user')
-    
+
 }
