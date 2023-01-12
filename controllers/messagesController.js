@@ -6,6 +6,7 @@ exports.getMessages = (req,res) => {
     knex('messages')
     .where({conversation_id:req.params.convo_id})
     .then((foundConvo) => {
+        console.log(foundConvo)
         res.status(200).json(foundConvo)
     })
     .catch((error) => {
@@ -14,8 +15,8 @@ exports.getMessages = (req,res) => {
 }
 
 exports.postMessage = (req,res) => {
-    console.log(req.params)
-    console.log(req.body)
+    // console.log(req.params)
+    // console.log(req.body)
     knex('messages')
     .insert(req.body)
     .then((newMsg) => {
@@ -24,4 +25,9 @@ exports.postMessage = (req,res) => {
     .catch((error) => {
         res.status(400).json(error)
     })
+}
+
+exports.getNewChat = (req,res) => {
+    console.log(req.params)
+    knex(`messages`)
 }

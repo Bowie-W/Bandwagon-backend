@@ -1,16 +1,17 @@
 const knex = require("knex")(require("../knexfile"));
 
 exports.createChat = (req,res) =>{
-    console.log(req.body)
+    // console.log(req.body)
     knex('conversations')
     .insert(req.body)
     .then((converseData) =>{
+        console.log(converseData)
         res.status(200).json(converseData)
     })
 }
 
 exports.getConversations = (req,res) =>{
-    console.log(req.params)
+    // console.log(req.params)
     knex('conversations')
     .where({sender_id:req.params.userid})
     .orWhere({receiver_id:req.params.userid})
@@ -21,7 +22,7 @@ exports.getConversations = (req,res) =>{
 }
 
 exports.checkConversations = (req,res) => {
-    console.log(req.body)
+    // console.log(req.body)
     knex('conversations')
     .where(function (){
         this
