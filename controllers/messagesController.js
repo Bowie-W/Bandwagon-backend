@@ -30,4 +30,5 @@ exports.postMessage = (req,res) => {
 exports.getNewChat = (req,res) => {
     console.log(req.params)
     knex(`messages`)
+    .where({})
 }
